@@ -7,7 +7,6 @@ const autoprefixer = require("gulp-autoprefixer");
 const cssbeautify = require("gulp-cssbeautify");
 const removeComments = require('gulp-strip-css-comments');
 const rename = require("gulp-rename");
-const sass = require("gulp-sass");
 const less = require("gulp-less");
 const cssnano = require("gulp-cssnano");
 const uglify = require("gulp-uglify");
@@ -19,7 +18,6 @@ const notify = require("gulp-notify");
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const browserSync = require("browser-sync").create();
-const smartGrid = require('smart-grid');
 const sourcemaps = require('gulp-sourcemaps');
 const purgecss = require('gulp-purgecss');
 const gcmq = require('gulp-group-css-media-queries');
@@ -36,7 +34,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 /* Paths */
 const srcPath = 'src/';
 const distPath = 'dist/';
-const smartPath = './smartgrid.js';
 const cssPreprocessor = 'less';
 
 const path = {
@@ -230,62 +227,15 @@ function clean(cb) {
     cb();
 }
 
-function grid(done) {
-    delete require.cache[nodePath.resolve(smartPath)];
-    const options = require(smartPath);
-    smartGrid('./src/assets/less/vendor', options);
-    done();
-}
-
 function watchFiles() {
     gulp.watch([path.watch.html], html);
     gulp.watch([path.watch.css], cssWatch);
     gulp.watch([path.watch.js], jsWatch);
     gulp.watch([path.watch.images], images);
     gulp.watch([path.watch.fonts], fonts);
-    gulp.watch(smartPath, grid);
 }
 
-let crPages = ['index', 'contact'];
-let crList = {
-    '.btn': ['display', 'font-size', 'height', 'line-height', 'padding', 'text-align', 'border'],
-}
-
-function criticalCSS(done){
-    crPages.forEach(async page => {
-        await critical.generate({
-            base: './dist/',
-            src: `${page}.html`,
-            css: [ 'assets/css/style.css' ],
-            target: {
-                css: `assets/css/${page}-critical.css`,
-            },
-            width: 1280,
-            height: 480,
-            include: [
-                '.footer'
-            ],
-            ignore: {
-                rule: [
-                    /hljs-/
-                ],
-                decl(node, value){
-                    let { selector } = node.parent;
-
-                    if(!(selector in crList)){
-                        return false;
-                    }
-
-                    return !crList[selector].includes(node.prop);
-                }
-            }
-        });
-    });
-
-    done();
-}
-
-const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts), criticalCSS);
+const build = gulp.series(clean, gulp.parallel(html, css, js, images, fonts));
 const watch = gulp.parallel(build, watchFiles, serve);
 
 
@@ -299,5 +249,3 @@ exports.clean = clean;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
-exports.grid = grid;
-exports.critical = criticalCSS;
