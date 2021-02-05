@@ -149,10 +149,6 @@ function cssWatch(cb) {
             }
         }))
         .pipe(less())
-        // .pipe(rename({
-        //     suffix: ".min",
-        //     extname: ".css"
-        // }))
         .pipe(dest(path.build.css))
         .pipe(browserSync.reload({stream: true}));
 
@@ -263,7 +259,6 @@ function criticalCSS(done){
             css: [ 'assets/css/style.css' ],
             target: {
                 css: `assets/css/${page}-critical.css`,
-                //uncritical: `css/${page}-async.css`
             },
             width: 1280,
             height: 480,
