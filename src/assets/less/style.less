@@ -1,0 +1,134 @@
+/* Vendor */
+@import "vendor/reset";
+@import "vendor/normalize";
+@import "vendor/grid";
+
+/* Helpers */
+@import "helpers/_vars";
+@import "helpers/_fonts";
+@import "helpers/_mixins";
+
+html {
+  font-size: 62.5%;
+}
+
+.page__body {
+  min-height: 100vh;
+  min-width: 32rem;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  grid-gap: 20px;
+
+  background-color: @project-bg-color;
+
+  font-family: @main-font, system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: @project-text-size;
+  color: @project-text-color;
+  line-height: @project-text-line-height;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.container {
+  //.container();
+  min-width: auto;
+  padding: 0 2rem;
+}
+
+.test {
+  .row-flex();
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.test-2 {
+  letter-spacing : -.36em;
+  font-size : 0;
+}
+
+.test__items {
+  display: inline-block;
+  margin: 20px 0;
+
+  font-size: 14px;
+  letter-spacing: normal;
+
+  font-family: @main-font;
+
+  background-color: rgba(0, 0, 0, .2);
+}
+
+.test__items a {
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.test__items a:hover {
+  background-color: #ccc;
+}
+
+.test__item {
+
+  margin-top: 20px;
+  margin-bottom: auto;
+
+  text-align: center;
+  .col();
+  .size(3);
+  .size-sm(5);
+  .size-xs(8);
+  .size-xxs(12);
+
+  .xxs-block({
+    max-width: 300px;
+  });
+
+  & div {
+    margin-top: auto;
+  }
+
+  & h2 {
+    font-weight: 700;
+    margin: 10px 0;
+    font-size: 20px;
+
+    .from(1300px, {
+      color: green;
+    });
+
+    .to(800px, {
+      font-size: 16px;
+    });
+  }
+
+}
+
+.list {
+  display: none;
+}
+
+//.debug-grid {
+//  .debug(rgba(0,0,0, .3), 1px #ff0 solid);
+//}
+
+/* Blocks */
+@import "blocks/header";
+@import "blocks/main";
+@import "blocks/footer";
+

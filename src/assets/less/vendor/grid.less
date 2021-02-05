@@ -1,0 +1,512 @@
+@columns: 12;
+@atom: (100% / @columns);
+
+@break_lg: 1200px;
+@break_md: 992px;
+@break_sm: 768px;
+@break_xs: 576px;
+@break_xxs: 420px;
+@break_xxs400: 400px;
+
+@offset: 3%;
+@offset_lg: @offset;
+@offset_md: @offset;
+@offset_sm: @offset;
+@offset_xs: @offset;
+@offset_xxs: @offset;
+@offset_xxs400: @offset;
+
+@offset_one_side: (@offset / 2);
+@offset_lg_one_side: (@offset_lg / 2);
+@offset_md_one_side: (@offset_md / 2);
+@offset_sm_one_side: (@offset_sm / 2);
+@offset_xs_one_side: (@offset_xs / 2);
+@offset_xxs_one_side: (@offset_xxs / 2);
+@offset_xxs400_one_side: (@offset_xxs400 / 2);
+
+@fields: 30px;
+@fields_md: 15px;
+@fields_sm: 15px;
+@fields_xs: 10px;
+@fields_xxs: 10px;
+@fields_xxs400: 10px;
+
+.container-full(){
+    padding-left: @fields;
+    padding-right: @fields;
+
+    .md-block({
+        padding-left: @fields_md;
+        padding-right: @fields_md;
+    });
+
+    .sm-block({
+        padding-left: @fields_sm;
+        padding-right: @fields_sm;
+    });
+
+    .xs-block({
+        padding-left: @fields_xs;
+        padding-right: @fields_xs;
+    });
+
+    .xxs-block({
+        padding-left: @fields_xxs;
+        padding-right: @fields_xxs;
+    });
+
+    .xxs400-block({
+        padding-left: @fields_xxs400;
+        padding-right: @fields_xxs400;
+    });
+}
+
+.row-offsets(){
+    margin-left: (@offset_one_side * -1);
+    margin-right: (@offset_one_side * -1);
+}
+
+.col-offsets(@type){
+    @{type}-left: @offset_one_side;
+    @{type}-right: @offset_one_side;
+}
+
+.container(){
+    max-width: 1230px;
+    margin: 0 auto;
+    .container-full();
+}
+
+.row-flex(){
+    display: flex;
+    flex-wrap: wrap;
+    .row-offsets();
+}
+
+.row-float(){
+    .row-offsets();
+    .clearfix();
+}
+
+.row-ib(){
+    .row-offsets();
+}
+
+.col(){
+    box-sizing: border-box;
+    word-wrap: break-word;
+    .col-offsets(margin);
+}
+
+.col-float(){
+    float: left;
+}
+
+.col-ib(){
+    display: inline-block;
+    vertical-align: top;
+}
+
+.col-padding(){
+    word-wrap: break-word;
+    .col-offsets(padding);
+}
+
+.size(@n){
+    width: @atom * @n - @offset;
+}
+
+.size-lg(@n){
+    .lg(width, @atom * @n - @offset_lg);
+}
+
+.size-md(@n){
+    .md(width, @atom * @n - @offset_md);
+}
+
+.size-sm(@n){
+    .sm(width, @atom * @n - @offset_sm);
+}
+
+.size-xs(@n){
+    .xs(width, @atom * @n - @offset_xs);
+}
+
+.size-xxs(@n){
+    .xxs(width, @atom * @n - @offset_xxs);
+}
+
+.size-xxs400(@n){
+    .xxs400(width, @atom * @n - @offset_xxs400);
+}
+
+.shift(@n){
+    margin-left: @atom * @n + @offset_one_side;
+    margin-right: @atom * @n + @offset_one_side;
+}
+
+.shift-left(@n){
+    margin-left: @atom * @n + @offset_one_side;
+}
+
+.shift-right(@n){
+    margin-right: @atom * @n + @offset_one_side;
+}
+
+.shift-padding(@n){
+    padding-left: @atom * @n + @offset_one_side;
+    padding-right: @atom * @n + @offset_one_side;
+}
+
+.shift-padding-left(@n){
+    padding-left: @atom * @n + @offset_one_side;
+}
+
+.shift-padding-right(@n){
+    padding-right: @atom * @n + @offset_one_side;
+}
+
+.shift-lg(@n){
+    .lg(margin-left, @atom * @n + @offset_lg_one_side);
+    .lg(margin-right, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-lg-left(@n){
+    .lg(margin-left, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-lg-right(@n){
+    .lg(margin-right, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-lg-padding(@n){
+    .lg(padding-left, @atom * @n + @offset_lg_one_side);
+    .lg(padding-right, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-lg-padding-left(@n){
+    .lg(padding-left, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-lg-padding-right(@n){
+    .lg(padding-right, @atom * @n + @offset_lg_one_side);
+}
+
+.shift-md(@n){
+    .md(margin-left, @atom * @n + @offset_md_one_side);
+    .md(margin-right, @atom * @n + @offset_md_one_side);
+}
+
+.shift-md-left(@n){
+    .md(margin-left, @atom * @n + @offset_md_one_side);
+}
+
+.shift-md-right(@n){
+    .md(margin-right, @atom * @n + @offset_md_one_side);
+}
+
+.shift-md-padding(@n){
+    .md(padding-left, @atom * @n + @offset_md_one_side);
+    .md(padding-right, @atom * @n + @offset_md_one_side);
+}
+
+.shift-md-padding-left(@n){
+    .md(padding-left, @atom * @n + @offset_md_one_side);
+}
+
+.shift-md-padding-right(@n){
+    .md(padding-right, @atom * @n + @offset_md_one_side);
+}
+
+.shift-sm(@n){
+    .sm(margin-left, @atom * @n + @offset_sm_one_side);
+    .sm(margin-right, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-sm-left(@n){
+    .sm(margin-left, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-sm-right(@n){
+    .sm(margin-right, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-sm-padding(@n){
+    .sm(padding-left, @atom * @n + @offset_sm_one_side);
+    .sm(padding-right, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-sm-padding-left(@n){
+    .sm(padding-left, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-sm-padding-right(@n){
+    .sm(padding-right, @atom * @n + @offset_sm_one_side);
+}
+
+.shift-xs(@n){
+    .xs(margin-left, @atom * @n + @offset_xs_one_side);
+    .xs(margin-right, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xs-left(@n){
+    .xs(margin-left, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xs-right(@n){
+    .xs(margin-right, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xs-padding(@n){
+    .xs(padding-left, @atom * @n + @offset_xs_one_side);
+    .xs(padding-right, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xs-padding-left(@n){
+    .xs(padding-left, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xs-padding-right(@n){
+    .xs(padding-right, @atom * @n + @offset_xs_one_side);
+}
+
+.shift-xxs(@n){
+    .xxs(margin-left, @atom * @n + @offset_xxs_one_side);
+    .xxs(margin-right, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs-left(@n){
+    .xxs(margin-left, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs-right(@n){
+    .xxs(margin-right, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs-padding(@n){
+    .xxs(padding-left, @atom * @n + @offset_xxs_one_side);
+    .xxs(padding-right, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs-padding-left(@n){
+    .xxs(padding-left, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs-padding-right(@n){
+    .xxs(padding-right, @atom * @n + @offset_xxs_one_side);
+}
+
+.shift-xxs400(@n){
+    .xxs400(margin-left, @atom * @n + @offset_xxs400_one_side);
+    .xxs400(margin-right, @atom * @n + @offset_xxs400_one_side);
+}
+
+.shift-xxs400-left(@n){
+    .xxs400(margin-left, @atom * @n + @offset_xxs400_one_side);
+}
+
+.shift-xxs400-right(@n){
+    .xxs400(margin-right, @atom * @n + @offset_xxs400_one_side);
+}
+
+.shift-xxs400-padding(@n){
+    .xxs400(padding-left, @atom * @n + @offset_xxs400_one_side);
+    .xxs400(padding-right, @atom * @n + @offset_xxs400_one_side);
+}
+
+.shift-xxs400-padding-left(@n){
+    .xxs400(padding-left, @atom * @n + @offset_xxs400_one_side);
+}
+
+.shift-xxs400-padding-right(@n){
+    .xxs400(padding-right, @atom * @n + @offset_xxs400_one_side);
+}
+
+.lg(@name, @value){
+    @media screen and (max-width: @break_lg){
+        @{name}: @value;
+    }
+}
+
+.lg-block(@content){
+    @media screen and (max-width: @break_lg){
+        @content();
+    }
+}
+
+.md(@name, @value){
+    @media screen and (max-width: @break_md){
+        @{name}: @value;
+    }
+}
+
+.md-block(@content){
+    @media screen and (max-width: @break_md){
+        @content();
+    }
+}
+
+.sm(@name, @value){
+    @media screen and (max-width: @break_sm){
+        @{name}: @value;
+    }
+}
+
+.sm-block(@content){
+    @media screen and (max-width: @break_sm){
+        @content();
+    }
+}
+
+.xs(@name, @value){
+    @media screen and (max-width: @break_xs){
+        @{name}: @value;
+    }
+}
+
+.xs-block(@content){
+    @media screen and (max-width: @break_xs){
+        @content();
+    }
+}
+
+.xxs(@name, @value){
+    @media screen and (max-width: @break_xxs){
+        @{name}: @value;
+    }
+}
+
+.xxs-block(@content){
+    @media screen and (max-width: @break_xxs){
+        @content();
+    }
+}
+
+.xxs400(@name, @value){
+    @media screen and (max-width: @break_xxs400){
+        @{name}: @value;
+    }
+}
+
+.xxs400-block(@content){
+    @media screen and (max-width: @break_xxs400){
+        @content();
+    }
+}
+
+.from(@min_width, @content){
+    @media screen and (min-width: @min_width){
+        @content();
+    }
+}
+
+.to(@max_width, @content){
+    @media screen and (max-width: @max_width){
+        @content();
+    }
+}
+
+.from-to(@min_width, @max_width, @content){
+    @media screen and (min-width: @min_width) and (max-width: @max_width){
+        @content();
+    }
+}
+
+.u-row-flex(@offset){
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: (@offset / -2);
+    margin-right: (@offset / -2);
+}
+
+.u-col(@offset){
+    box-sizing: border-box;
+    word-wrap: break-word;
+    margin-left: (@offset / 2);
+    margin-right: (@offset / 2);
+}
+
+.u-size(@n, @columns, @offset){
+    width: ~"calc(100% / @{columns} * @{n} - @{offset})";
+}
+
+.reset(){
+    body,div,dl,dt,dd,ul,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,input,textarea,p,blockquote,th,td{
+        margin: 0;
+        padding: 0;
+    }
+    table{
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    fieldset,img,abbr{
+        border: 0;
+    }
+    address,caption,cite,code,dfn,em,strong,th,var{
+        font-style: normal;
+        font-weight: normal;
+    }
+    ul li{
+        list-style: none;
+    }
+    caption,th{
+        text-align: left;
+    }
+    h1,h2,h3,h4,h5,h6{
+        font-size: 100%;
+        font-weight: normal;
+    }
+    sup{
+        vertical-align: text-top;
+    }
+    sub{
+        vertical-align: text-bottom;
+    }
+    input,textarea,select{
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
+    legend{
+        color: #000;
+    }
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,main{
+        display: block;
+    }
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.debug(@background, @outline){
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    
+    > div{
+        height: inherit;
+        .container();
+        
+        > div{
+            height: inherit;
+            .row-flex();
+            
+            > div{
+                .col();
+                .size(1);
+                height: inherit;
+                outline: @outline;
+                background: @background;
+            }
+        }
+    }
+}
+
+.clearfix(){
+    &::after{
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
